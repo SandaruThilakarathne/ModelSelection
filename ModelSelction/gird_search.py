@@ -10,8 +10,8 @@ from sklearn.metrics import confusion_matrix, accuracy_score
 
 # loading dataset
 dataset = pd.read_csv('Python/Social_Network_Ads.csv')
-X = dataset.iloc[:, [2, 3]]
-y = dataset.iloc[:, -1]
+X = dataset.iloc[:, [2, 3]].values
+y = dataset.iloc[:, -1].values
 
 # feature scaling
 sc = StandardScaler()
@@ -40,18 +40,19 @@ print("Accuracy: {:.2f}%".format(accuracies.mean() * 100))
 print("Standard Deviation: {:.2f}%".format(accuracies.std() * 100))
 
 # Applying Grid Search to find the best model and the best parameters
-parameters = [{'C': [1, 10, 100, 100], 'kernel': ['linear']},
-              {'C': [1, 10, 100, 100], 'kernel': ['rbf'], 'gamma': [0.1, 0.2,
-                                                                    0.3, 0.4,
-                                                                    0.5, 0.6,
-                                                                    0.7, 0.8,
-                                                                    0.9]}]
+parameters = [{'C': [0.25, 0.5, 0.75, 1, 10, 100, 100], 'kernel': ['linear']},
+              {'C': [0.25, 0.5, 0.75, 1, 10, 100, 100], 'kernel': ['rbf'],
+               'gamma': [0.1, 0.2,
+                         0.3, 0.4,
+                         0.5, 0.6,
+                         0.7, 0.8,
+                         0.9]}]
 grid_search = GridSearchCV(
     estimator=classifier,
     param_grid=parameters,
     scoring='accuracy',
     cv=10,
-    n_jobs=1
+    n_jobs=-1
 )
 grid_search = grid_search.fit(X_train, y_train)
 best_accuracy = grid_search.best_score_

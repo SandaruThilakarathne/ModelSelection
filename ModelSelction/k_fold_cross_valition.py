@@ -10,8 +10,8 @@ from sklearn.metrics import confusion_matrix, accuracy_score
 
 # loading dataset
 dataset = pd.read_csv('Python/Social_Network_Ads.csv')
-X = dataset.iloc[:, [2, 3]]
-y = dataset.iloc[:, -1]
+X = dataset.iloc[:, [2, 3]].values
+y = dataset.iloc[:, -1].values
 
 # feature scaling
 sc = StandardScaler()
