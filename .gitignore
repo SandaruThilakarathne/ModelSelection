@@ -1,0 +1,8 @@
+venv
+.idea
+ModelSelction/Python/k_fold_cross_validation.ipynb
+ModelSelction/Python/k_fold_cross_validation.py
+ModelSelction/Python/grid_search.ipynb
+ModelSelction/Python/grid_search.py
+XGBoost/Python/xg_boost.ipynb
+XGBoost/Python/xg_boost.py
